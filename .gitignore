@@ -3,3 +3,8 @@
 ################################################################################
 
 /src/Library.Framework/Library.Framework.JsonUtil/obj
+/src/Library.Framework/Library.Framework.HttpService/obj
+/.vs
+/src/Library.Framework/.vs/Library.Framework/v16
+/src/Library.Framework/Library.Framework.HttpService/bin/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.JsonUtil/bin/Debug/netcoreapp2.2
