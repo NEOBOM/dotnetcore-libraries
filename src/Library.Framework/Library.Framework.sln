@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.HttpServi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.JsonUtil", "Library.Framework.JsonUtil\Library.Framework.JsonUtil.csproj", "{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.Test", "Library.Framework.Test\Library.Framework.Test.csproj", "{D7867BA4-2899-4471-84B5-B6CDE356BCA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

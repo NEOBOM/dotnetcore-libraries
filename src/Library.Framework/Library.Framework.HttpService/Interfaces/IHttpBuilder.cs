@@ -20,5 +20,13 @@ namespace Library.HttpServices.Builders.Interfaces
         Task<HttpResponseMessage> PostAsync(string uri, object content);
 
         HttpResponseMessage PostSync(string uri, object content);
+
+        HttpResponseMessage PutSync(string uri, object content);
+
+        Task<HttpResponseMessage> PutAsync(string uri, object content);
+
+        HttpResponseMessage DeleteSync(string uri, object content);
+
+        Task<HttpResponseMessage> DeleteAsync(string uri);
     }
 }

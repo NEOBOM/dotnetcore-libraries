@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Library.Framework.JsonUtil;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -12,22 +14,36 @@ namespace Library.HttpServices.Builders.Extensions
     {
         private static string _regexMatch = @"([^\[]\w[^\]]*)|(\w)";
 
+        public static T ExtractArrayToObjectSync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
+        {
+            return ExtractArrayToObjectAsync<T>(httpResponseMessage).GetAwaiter().GetResult();
+        }
+
         public static IList<T> ExtractArrayToListObjectSync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
         {
             return ExtractArrayToListObjectAsync<T>(httpResponseMessage).GetAwaiter().GetResult();
+        }
+
+        public static async Task<T> ExtractArrayToObjectAsync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
+        {
+            var content = await httpResponseMessage.Content.ReadAsStringAsync();
+
+            var jarray = JsonHelper.JArrayParser(content);
+
+            return CreateObject<T>(jarray);
         }
 
         public static async Task<IList<T>> ExtractArrayToListObjectAsync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
         {
             var content = await httpResponseMessage.Content.ReadAsStringAsync();
 
-            var result = JsonConvert.DeserializeObject<string[]>(content);
+            var jarray = JsonHelper.JArrayParser(content);
 
-            var list = new List<T>(result.Length);
+            var list = new List<T>(jarray.Count);
 
-            foreach (var item in result)
+            foreach (var item in jarray)
             {
-                list.Add(CreateObject<T>(result));
+                list.Add(CreateObject<T>(item as JArray));
             }
 
             return list;
@@ -69,7 +85,7 @@ namespace Library.HttpServices.Builders.Extensions
             if (match.Success)
                 return CreateObject<T>(match.Value.Replace(@"""", "").Split(","));
 
-            return CreateObject<T>(null);
+            return null;
         }
 
         private static T CreateObject<T>(string[] contents) where T : class, new()
@@ -86,6 +102,35 @@ namespace Library.HttpServices.Builders.Extensions
                         property.SetValue(obj, contents[index]);
                     else
                         property.SetValue(obj, Convert.ChangeType(contents[index], property.PropertyType));
+
+                    index++;
+                }
+            }
+
+            return obj;
+        }
+
+        private static T CreateObject<T>(JArray jArray, T obj = null) where T : class, new()
+        {
+            if (jArray.HasValues)
+            {
+                if(obj == null)
+                    obj = new T();
+
+                int index = 0;
+
+                foreach (PropertyInfo property in obj.GetType().GetProperties())
+                {
+                    if(jArray[index].Type == JTokenType.Array)
+                    {
+                        CreateObject<T>(jArray[index] as JArray, obj);
+                        continue;
+                    }
+
+                    if (property.PropertyType == jArray[index].GetType())
+                        property.SetValue(obj, jArray[index]);
+                    else
+                        property.SetValue(obj, Convert.ChangeType(jArray[index], property.PropertyType));
 
                     index++;
                 }

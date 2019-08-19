@@ -9,9 +9,12 @@ namespace Library.HttpServices.Builders
 {
     public class HttpRestBuilder : HttpClientBase, IHttpBuilder
     {
+        public HttpRestBuilder(string baseAddress) : base(new Uri(baseAddress), "application/json")
+        {
+        }
+
         public HttpRestBuilder(Uri baseAddress) : base(baseAddress, "application/json")
         {
-
         }
 
         public HttpRestBuilder AddBearerToken(string bearerToken)
