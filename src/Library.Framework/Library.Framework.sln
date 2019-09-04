@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.HttpService", "Library.Framework.HttpService\Library.Framework.HttpService.csproj", "{9067CB27-EEC8-4EF5-9BC5-40E9408B8928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.HttpService", "Library.Framework.HttpService\Library.Framework.HttpService.csproj", "{9067CB27-EEC8-4EF5-9BC5-40E9408B8928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.JsonUtil", "Library.Framework.JsonUtil\Library.Framework.JsonUtil.csproj", "{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.JsonUtil", "Library.Framework.JsonUtil\Library.Framework.JsonUtil.csproj", "{A90BF11D-C9C4-4CCE-AADA-C2A77068FDF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.Test", "Library.Framework.Test\Library.Framework.Test.csproj", "{D7867BA4-2899-4471-84B5-B6CDE356BCA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.Test", "Library.Framework.Test\Library.Framework.Test.csproj", "{D7867BA4-2899-4471-84B5-B6CDE356BCA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.MongoDB", "Library.Framework.MongoDB\Library.Framework.MongoDB.csproj", "{012E68C2-D9E3-4DA6-9FAF-089FF936451A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.SqlEF", "Library.Framework.SqlEF\Library.Framework.SqlEF.csproj", "{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.ADO", "Library.Framework.ADO\Library.Framework.ADO.csproj", "{714E594E-5A61-479B-874F-993B5A0FDD71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7867BA4-2899-4471-84B5-B6CDE356BCA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012E68C2-D9E3-4DA6-9FAF-089FF936451A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012E68C2-D9E3-4DA6-9FAF-089FF936451A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012E68C2-D9E3-4DA6-9FAF-089FF936451A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012E68C2-D9E3-4DA6-9FAF-089FF936451A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714E594E-5A61-479B-874F-993B5A0FDD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714E594E-5A61-479B-874F-993B5A0FDD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714E594E-5A61-479B-874F-993B5A0FDD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714E594E-5A61-479B-874F-993B5A0FDD71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

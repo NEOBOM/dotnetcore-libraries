@@ -71,23 +71,6 @@ namespace Library.HttpServices.Builders.Extensions
             return list;
         }
 
-        public static T ExtractContentArrayToObjectSync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
-        {
-            return ExtractContentArrayToObjectAsync<T>(httpResponseMessage).GetAwaiter().GetResult();
-        }
-
-        public static async Task<T> ExtractContentArrayToObjectAsync<T>(this HttpResponseMessage httpResponseMessage) where T : class, new()
-        {
-            var content = await httpResponseMessage.Content.ReadAsStringAsync();
-
-            var match = Regex.Match(content, _regexMatch, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline);
-
-            if (match.Success)
-                return CreateObject<T>(match.Value.Replace(@"""", "").Split(","));
-
-            return null;
-        }
-
         private static T CreateObject<T>(string[] contents) where T : class, new()
         {
             T obj = new T();

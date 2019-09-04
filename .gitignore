@@ -13,3 +13,10 @@
 /src/Library.Framework/Library.HttpServices.SignalR/obj/Debug/netcoreapp2.2
 /src/Library.Framework/Library.HttpServices.SignalR/obj
 /src/Library.Framework/.vs/Library.Framework/DesignTimeBuild
+/src/Library.Framework/Library.Framework.ADO/bin/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.ADO/obj
+/src/Library.Framework/Library.Framework.MongoDB/bin/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.MongoDB/obj
+/src/Library.Framework/Library.Framework.SqlEF/bin/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.SqlEF/obj/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.SqlEF/obj
