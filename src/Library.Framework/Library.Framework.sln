@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.JsonUtil"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.Test", "Library.Framework.Test\Library.Framework.Test.csproj", "{D7867BA4-2899-4471-84B5-B6CDE356BCA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.MongoDB", "Library.Framework.MongoDB\Library.Framework.MongoDB.csproj", "{012E68C2-D9E3-4DA6-9FAF-089FF936451A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.MongoDB", "Library.Framework.MongoDB\Library.Framework.MongoDB.csproj", "{012E68C2-D9E3-4DA6-9FAF-089FF936451A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.SqlEF", "Library.Framework.SqlEF\Library.Framework.SqlEF.csproj", "{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.SqlEF", "Library.Framework.SqlEF\Library.Framework.SqlEF.csproj", "{A50C1C6C-D505-4DEB-97D5-186A9EB5492D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.ADO", "Library.Framework.ADO\Library.Framework.ADO.csproj", "{714E594E-5A61-479B-874F-993B5A0FDD71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.ADO", "Library.Framework.ADO\Library.Framework.ADO.csproj", "{714E594E-5A61-479B-874F-993B5A0FDD71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.Console", "Library.Framework.Console\Library.Framework.Console.csproj", "{497AB211-C64B-456C-9BA5-D253B3FCAE9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{714E594E-5A61-479B-874F-993B5A0FDD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{714E594E-5A61-479B-874F-993B5A0FDD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{714E594E-5A61-479B-874F-993B5A0FDD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497AB211-C64B-456C-9BA5-D253B3FCAE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497AB211-C64B-456C-9BA5-D253B3FCAE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497AB211-C64B-456C-9BA5-D253B3FCAE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497AB211-C64B-456C-9BA5-D253B3FCAE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

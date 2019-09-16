@@ -20,3 +20,14 @@
 /src/Library.Framework/Library.Framework.SqlEF/bin/Debug/netcoreapp2.2
 /src/Library.Framework/Library.Framework.SqlEF/obj/Debug/netcoreapp2.2
 /src/Library.Framework/Library.Framework.SqlEF/obj
+/src/Library.Framework/Library.Framework.ADO/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Console/bin
+/src/Library.Framework/Library.Framework.Console/obj/Debug/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Console/obj/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Console/obj
+/src/Library.Framework/Library.Framework.HttpService/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.JsonUtil/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.MongoDB/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.SqlEF/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Test/bin/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Test/obj/Release/netcoreapp2.2
