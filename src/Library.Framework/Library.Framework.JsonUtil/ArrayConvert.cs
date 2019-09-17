@@ -47,91 +47,11 @@ namespace Library.Framework.JsonUtil
             char [] caracters = null;
             int count = 0;
 
-            int start = 0;
-            int length = lethers.Length;
-
-            if (content.StartsWith("[["))
+            for (int i = 0; i < content.Length; i++)
             {
-                start++;
-                length--;
-            }
-
-            //for (int i = start; i < length; i++)
-            //{
-            //    switch (lethers[i])
-            //    {
-            //        case '[':
-            //            if(caracters != null && count > 0)
-            //            {
-            //                list.Add(new string(caracters));
-            //                caracters = null;
-            //                count = 0;
-            //            }
-
-            //            if (caracters == null)
-            //            {
-            //                int arrayIndex = content.IndexOf("]", i);
-            //                int separeteIndex = content.IndexOf(",", i);
-
-            //                if (separeteIndex > 0 && separeteIndex < arrayIndex)
-            //                    caracters = new char[(separeteIndex - i) - 1];
-            //                else
-            //                    caracters = new char[arrayIndex - i];
-            //            }
-            //            break;
-            //        case ',':
-            //        case ']':
-            //            if(caracters != null)
-            //            {
-            //                list.Add(new string(caracters));
-            //                caracters = null;
-            //                count = 0;
-            //            }
-            //            break;
-            //        default:
-            //            if (caracters == null)
-            //            {
-            //                int arrayIndex = content.IndexOf("]", i);
-            //                int separeteIndex = content.IndexOf(",", i);
-
-            //                if (separeteIndex > 0 && separeteIndex < arrayIndex)
-            //                    caracters = new char[separeteIndex - i];
-            //                else
-            //                    caracters = new char[arrayIndex - i];
-            //            }
-
-            //            caracters[count] = lethers[i];
-            //            count++;
-
-            //            break;
-            //    }
-            //}
-
-            int i = start;
-
-            foreach (var lether in content)
-            {
-                switch (lether)
+                switch (lethers[i])
                 {
                     case '[':
-                        if (caracters != null && count > 0)
-                        {
-                            list.Add(new string(caracters));
-                            caracters = null;
-                            count = 0;
-                        }
-
-                        if (caracters == null)
-                        {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
-
-                            if (separeteIndex > 0 && separeteIndex < arrayIndex)
-                                caracters = new char[(separeteIndex - i) - 1];
-                            else
-                                caracters = new char[arrayIndex - i];
-                        }
-                        break;
                     case ',':
                     case ']':
                         if (caracters != null)
@@ -153,7 +73,7 @@ namespace Library.Framework.JsonUtil
                                 caracters = new char[arrayIndex - i];
                         }
 
-                        caracters[count] = lether;
+                        caracters[count] = lethers[i];
                         count++;
 
                         break;
@@ -172,41 +92,11 @@ namespace Library.Framework.JsonUtil
             StringBuilder caracters = null;
             int count = 0;
 
-            int start = 0;
-            int length = lethers.Length;
-
-            if (content.StartsWith("[["))
-            {
-                start++;
-                length--;
-            }
-
-            for (int i = start; i < length; i++)
+            for (int i = 0; i < content.Length; i++)
             {
                 switch (lethers[i])
                 {
                     case '[':
-
-                        if (caracters != null && count > 0)
-                        {
-                            list.Add(caracters.ToString());
-                            caracters = null;
-                            count = 0;
-                        }
-
-                        if (caracters == null)
-                        {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
-
-                            if (separeteIndex > 0 && separeteIndex < arrayIndex)
-                                caracters =  new StringBuilder((separeteIndex - i) - 1);
-                            else
-                                caracters = new StringBuilder(arrayIndex - i);
-                        }
-
-                        break;
-
                     case ',':
                     case ']':
                         if (caracters != null)
@@ -249,46 +139,16 @@ namespace Library.Framework.JsonUtil
             Span<char> caracters = null;
             int count = 0;
 
-            int start = 0;
-            int length = lethers.Length;
-
-            if (content.StartsWith("[["))
-            {
-                start++;
-                length--;
-            }
-
-            for (int i = start; i < length; i++)
+            for (int i = 0; i < content.Length; i++)
             {
                 switch (lethers[i])
                 {
                     case '[':
-
-                        if (caracters != null && count > 0)
-                        {
-                            list.Add(caracters.ToString());
-                            caracters = null;
-                            count = 0;
-                        }
-
-                        if (caracters == null)
-                        {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
-
-                            if (separeteIndex > 0 && separeteIndex < arrayIndex)
-                                caracters = new Span<char>(new char[(separeteIndex - i) - 1]);
-                            else
-                                caracters = new Span<char>(new char[arrayIndex - i]);
-                        }
-
-                        break;
-
                     case ',':
                     case ']':
                         if (caracters != null)
                         {
-                            list.Add(caracters.ToString());
+                            list.Add(new string(caracters));
                             caracters = null;
                             count = 0;
                         }
