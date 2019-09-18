@@ -85,47 +85,60 @@ namespace Library.Framework.JsonUtil
 
         public static List<string> GetArrayWithStringBuilder(string content)
         {
-            var lethers = content.ToCharArray();
+            //var lethers = content.ToCharArray();
 
             var list = new List<string>();
 
-            StringBuilder caracters = null;
-            int count = 0;
+            StringBuilder caracters = new StringBuilder();
+            //int count = 0;
 
-            for (int i = 0; i < content.Length; i++)
+            foreach (var lether in content)
             {
-                switch (lethers[i])
+                switch (lether)
                 {
                     case '[':
                     case ',':
                     case ']':
-                        if (caracters != null)
+                        if (caracters.Length > 0)
                         {
                             list.Add(caracters.ToString());
-                            caracters = null;
-                            count = 0;
+                            caracters.Clear();
+                            //count = 0;
                         }
 
                         break;
 
                     default:
 
-                        if (caracters == null)
-                        {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
-
-                            if (separeteIndex > 0 && separeteIndex < arrayIndex)
-                                caracters = new StringBuilder(separeteIndex - i);
-                            else
-                                caracters = new StringBuilder(arrayIndex - i);
-                        }
-
-                        caracters.Append(lethers[i]);
-                        count++;
+                        caracters.Append(lether);
+                        //count++;
                         break;
                 }
             }
+
+            //for (int i = 0; i < content.Length; i++)
+            //{
+            //    switch (lethers[i])
+            //    {
+            //        case '[':
+            //        case ',':
+            //        case ']':
+            //            if (caracters.Length > 0)
+            //            {
+            //                list.Add(caracters.ToString());
+            //                caracters.Clear();
+            //                count = 0;
+            //            }
+
+            //            break;
+
+            //        default:
+
+            //            caracters.Append(lethers[i]);
+            //            count++;
+            //            break;
+            //    }
+            //}
 
             return list;
         }
