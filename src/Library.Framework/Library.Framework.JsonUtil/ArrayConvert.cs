@@ -9,21 +9,21 @@ namespace Library.Framework.JsonUtil
     public class ArrayConvert
     {
 
-        public static List<string> GenerateArray(string content)
+        public static List<List<string>> GenerateArray(string content)
         {
             Validate(content);
 
             return GetArrayWithCharArray(content);
         }
 
-        public static List<String> GenerateArray2(string content)
+        public static List<List<String>> GenerateArray2(string content)
         {
             Validate(content);
 
             return GetArrayWithStringBuilder(content);
         }
 
-        public static List<String> GenerateArray3(string content)
+        public static List<List<string>> GenerateArray3(string content)
         {
             Validate(content);
 
@@ -38,34 +38,60 @@ namespace Library.Framework.JsonUtil
             return JsonHelper.DeserializeObject<List<string[]>>(content);
         }
 
-        public static List<string> GetArrayWithCharArray(string content)
+        public static List<List<string>> GetArrayWithCharArray(string content)
         {
-            var lethers = content.ToCharArray();
+            var list = new List<List<string>>();
 
-            var list = new List<string>();
+            List<string> contentList = null;
 
             char [] caracters = null;
             int count = 0;
 
-            for (int i = 0; i < content.Length; i++)
+            int i = 0;
+
+            int arrayIndex = 0;
+            int separeteIndex = 0;
+
+            foreach (var lether in content)
             {
-                switch (lethers[i])
+                switch (lether)
                 {
                     case '[':
+                        if (contentList == null)
+                            contentList = new List<string>();
+
+                        i++;
+                        break;
                     case ',':
-                    case ']':
-                        if (caracters != null)
+                        if (caracters.Length > 0)
                         {
-                            list.Add(new string(caracters));
+                            contentList.Add(new string(caracters));
                             caracters = null;
                             count = 0;
                         }
+
+                        i++;
+                        break;
+                    case ']':
+                        if (caracters != null)
+                        {
+                            contentList.Add(new string(caracters));
+                            caracters = null;
+                            count = 0;
+                        }
+
+                        if (contentList != null)
+                            list.Add(contentList);
+
+                        contentList = null;
+
+                        i++;
                         break;
                     default:
                         if (caracters == null)
                         {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
+                            arrayIndex = content.IndexOf("]", i);
+                            separeteIndex = content.IndexOf(",", i);
 
                             if (separeteIndex > 0 && separeteIndex < arrayIndex)
                                 caracters = new char[separeteIndex - i];
@@ -73,9 +99,10 @@ namespace Library.Framework.JsonUtil
                                 caracters = new char[arrayIndex - i];
                         }
 
-                        caracters[count] = lethers[i];
+                        caracters[count] = lether;
                         count++;
 
+                        i++;
                         break;
                 }
             }
@@ -83,97 +110,109 @@ namespace Library.Framework.JsonUtil
             return list;
         }
 
-        public static List<string> GetArrayWithStringBuilder(string content)
+        public static List<List<string>> GetArrayWithStringBuilder(string content)
         {
-            //var lethers = content.ToCharArray();
+            var list = new List<List<string>>();
 
-            var list = new List<string>();
+            List<string> contentList = null;
 
-            StringBuilder caracters = new StringBuilder();
-            //int count = 0;
+            var caracters = new StringBuilder();
 
             foreach (var lether in content)
             {
                 switch (lether)
                 {
                     case '[':
+                        if(contentList == null)
+                            contentList = new List<string>();
+
+                        break;
                     case ',':
+                        if (caracters.Length > 0)
+                        {
+                            contentList.Add(caracters.ToString());
+                            caracters.Clear();
+                        }
+
+                        break;
                     case ']':
                         if (caracters.Length > 0)
                         {
-                            list.Add(caracters.ToString());
+                            contentList.Add(caracters.ToString());
                             caracters.Clear();
-                            //count = 0;
                         }
+
+                        if (contentList != null)
+                            list.Add(contentList);
+
+                        contentList = null;
 
                         break;
 
                     default:
-
                         caracters.Append(lether);
-                        //count++;
                         break;
                 }
             }
 
-            //for (int i = 0; i < content.Length; i++)
-            //{
-            //    switch (lethers[i])
-            //    {
-            //        case '[':
-            //        case ',':
-            //        case ']':
-            //            if (caracters.Length > 0)
-            //            {
-            //                list.Add(caracters.ToString());
-            //                caracters.Clear();
-            //                count = 0;
-            //            }
-
-            //            break;
-
-            //        default:
-
-            //            caracters.Append(lethers[i]);
-            //            count++;
-            //            break;
-            //    }
-            //}
-
             return list;
         }
 
-        public static List<string> GetArrayWithSpan(string content)
+        public static List<List<string>> GetArrayWithSpan(string content)
         {
-            var lethers = content.AsSpan();
+            var list = new List<List<string>>();
 
-            var list = new List<string>();
+            List<string> contentList = null;
 
             Span<char> caracters = null;
             int count = 0;
 
-            for (int i = 0; i < content.Length; i++)
+            int arrayIndex = 0;
+            int separeteIndex = 0;
+
+            int i = 0;
+
+            foreach (var lether in content)
             {
-                switch (lethers[i])
+                switch (lether)
                 {
                     case '[':
+                        if (contentList == null)
+                            contentList = new List<string>();
+
+                        i++;
+                        break;
                     case ',':
-                    case ']':
-                        if (caracters != null)
+                        if (caracters.Length > 0)
                         {
-                            list.Add(new string(caracters));
+                            contentList.Add(caracters.ToString());
                             caracters = null;
                             count = 0;
                         }
 
+                        i++;
+                        break;
+                    case ']':
+                        if (caracters != null)
+                        {
+                            contentList.Add(caracters.ToString());
+                            caracters = null;
+                            count = 0;
+                        }
+
+                        if (contentList != null)
+                            list.Add(contentList);
+
+                        contentList = null;
+
+                        i++;
                         break;
 
                     default:
-
                         if (caracters == null)
                         {
-                            int arrayIndex = content.IndexOf("]", i);
-                            int separeteIndex = content.IndexOf(",", i);
+                            arrayIndex = content.IndexOf("]", i);
+                            separeteIndex = content.IndexOf(",", i);
 
                             if (separeteIndex > 0 && separeteIndex < arrayIndex)
                                 caracters = new Span<char>(new char[separeteIndex - i]);
@@ -181,8 +220,11 @@ namespace Library.Framework.JsonUtil
                                 caracters = new Span<char>(new char[arrayIndex - i]);
                         }
 
-                        caracters[count] = lethers[i];
+                        caracters[count] = lether;
                         count++;
+
+                        i++;
+
                         break;
                 }
             }
