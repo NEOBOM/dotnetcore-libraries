@@ -18,9 +18,9 @@ namespace Library.Framework.MongoDB
             return Collection<TEntity>().Find(expression).FirstOrDefault();
         }
 
-        protected async Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> expression)
+        protected Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> expression)
         {
-            return await Collection<TEntity>().Find(expression).FirstOrDefaultAsync();
+            return Collection<TEntity>().Find(expression).FirstOrDefaultAsync();
         }
 
         protected List<TEntity> Select(Expression<Func<TEntity, bool>> expression)
@@ -28,16 +28,47 @@ namespace Library.Framework.MongoDB
             return Collection<TEntity>().Find(expression).ToList();
         }
 
-        protected async Task<List<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> expression)
+        protected Task<List<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> expression)
         {
-            return await Collection<TEntity>().Find(expression).ToListAsync();
+            return Collection<TEntity>().Find(expression).ToListAsync();
         }
 
-        protected async Task<List<TEntity>> SelectAsync<T>(Func<T, Expression<Func<TEntity, bool>>> expression, List<T> entities) where T : class
+        protected Task<List<TEntity>> Select<T>(Func<T, Expression<Func<TEntity, bool>>> expression, List<T> entities) where T : class
         {
             var filters = Builders<TEntity>.Filter.And(entities?.Select(entity => Builders<TEntity>.Filter.Where(expression(entity))));
 
-            return await Collection<TEntity>().Find(filters).ToListAsync();
+            return Collection<TEntity>().Find(filters).ToListAsync();
+        }
+
+        protected List<TEntity> SelectAsync<T>(Func<T, Expression<Func<TEntity, bool>>> expression, List<T> entities) where T : class
+        {
+            var filters = Builders<TEntity>.Filter.And(entities?.Select(entity => Builders<TEntity>.Filter.Where(expression(entity))));
+
+            return Collection<TEntity>().Find(filters).ToList();
+        }
+
+        protected List<TEntity> SelectWithLimit(Expression<Func<TEntity, bool>> expression, int limit)
+        {
+            return Collection<TEntity>().Find(expression).Limit(limit).ToList();
+        }
+
+        protected Task<List<TEntity>> SelectWithLimitAsync(Expression<Func<TEntity, bool>> expression, int limit)
+        {
+            return Collection<TEntity>().Find(expression).Limit(limit).ToListAsync();
+        }
+
+        public List<TEntity> SelectWithKey(string key, string value)
+        {
+            var filter = Builders<TEntity>.Filter.Eq(key, value);
+
+            return Collection<TEntity>().Find(filter).ToList();
+        }
+
+        public List<TEntity> SelectWithKeyAsy(string key, string value)
+        {
+            var filter = Builders<TEntity>.Filter.Eq(key, value);
+
+            return Collection<TEntity>().Find(filter).ToList();
         }
 
         protected List<TEntity> SelectAll()

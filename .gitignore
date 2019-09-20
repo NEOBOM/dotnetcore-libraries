@@ -31,3 +31,4 @@
 /src/Library.Framework/Library.Framework.SqlEF/bin/Release/netcoreapp2.2
 /src/Library.Framework/Library.Framework.Test/bin/Release/netcoreapp2.2
 /src/Library.Framework/Library.Framework.Test/obj/Release/netcoreapp2.2
+/src/Library.Framework/Library.Framework.Test/obj/Library.Framework.Test.csproj.nuget.cache
