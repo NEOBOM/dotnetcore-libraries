@@ -41,8 +41,8 @@ namespace Library.Framework.Console
         //    for (int i = 0; i < 1_000_000; i++)
         //    {
         //        //var result = ArrayConvert.GenerateArray(_contentTest);
-        //        var result = ArrayConvert.GenerateArray2(_contentTest);
-        //        //var result = ArrayConvert.GenerateArray3(_contentTest);
+        //        //var result = ArrayConvert.GenerateArray2(_contentTest);
+        //       //var result = ArrayConvert.GenerateArray3(_contentTest);
         //        //var result = ArrayConvert.GenerateArray4(_contentTest);
 
         //        if (result == null || result.Count == 0)
