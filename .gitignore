@@ -32,3 +32,10 @@
 /src/Library.Framework/Library.Framework.Test/bin/Release/netcoreapp2.2
 /src/Library.Framework/Library.Framework.Test/obj/Release/netcoreapp2.2
 /src/Library.Framework/Library.Framework.Test/obj/Library.Framework.Test.csproj.nuget.cache
+/src/Library.Framework/Library.Framework.ADO/bin
+/src/Library.Framework/Library.Framework.Commom/bin
+/src/Library.Framework/Library.Framework.Commom/obj
+/src/Library.Framework/Library.Framework.HttpService/bin
+/src/Library.Framework/Library.Framework.JsonUtil/bin
+/src/Library.Framework/Library.Framework.MongoDB/bin
+/src/Library.Framework/Library.Framework.SqlEF/bin
