@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using Library.Framework.Console.Entity;
 using Library.Framework.JsonUtil;
 using System;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ namespace Library.Framework.Console
     //[MemoryDiagnoser]
     public class Program
     {
-        private static readonly string _contentTest = "[[123154,4564564,654654564], [123154,4564564,654654564], [123154,4564564,654654564]]";
+        private static readonly string _contentTest = "[[123154,4564564,654654564], [456485,8565445,222222], [333333,666666,444444]]";
 
         static void Main(string[] args)
         {
@@ -19,7 +20,7 @@ namespace Library.Framework.Console
         }
 
         //[Benchmark]
-        //public void ConvertCustomList() => ArrayConvert.ConvertCustomList(_contentTest);
+        //public void ConvertCustomList() => ArrayConvert.ConvertCustomList<ObjectTest>(_contentTest);
 
         //[Benchmark]
         //public void DeserializeObject() => ArrayConvert.DeserializeObject(_contentTest);
@@ -37,7 +38,7 @@ namespace Library.Framework.Console
             sw.Start();
             for (int i = 0; i < 1_000_000; i++)
             {
-                var result = ArrayConvert.ConvertCustomList(_contentTest);
+                var result = ArrayConvert.ConvertCustomList<ObjectTest>(_contentTest);
                 //var result = ArrayConvert.DeserializeObject (_contentTest);
                 //var result = ArrayConvert.Deserialize(_contentTest);
 

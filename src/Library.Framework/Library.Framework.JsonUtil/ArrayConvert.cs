@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
@@ -7,11 +8,11 @@ namespace Library.Framework.JsonUtil
 {
     public class ArrayConvert
     {
-        public static List<List<String>> ConvertCustomList(string content)
+        public static List<T> ConvertCustomList<T>(string content) where T : new()
         {
             Validate(content);
 
-            return GetArrayWithStringBuilder(content);
+            return GetArrayWithStringBuilder<T>(content);
         }
 
         public static List<object> DeserializeObject(string content)
@@ -28,16 +29,23 @@ namespace Library.Framework.JsonUtil
             return JsonSerializer.Deserialize<List<object>>(content);
         }
 
-        public static List<List<string>> GetArrayWithStringBuilder(string content)
+        public static List<T> GetArrayWithStringBuilder<T>(string content) where T : new()
         {
-            var list = new List<List<string>>();
+            var list = new List<T>();
 
-            List<string> contentList = null;
+            T obj = default(T);
+
+            PropertyInfo[] properties = null;
+
+            int index = 0;
 
             var caracters = new StringBuilder();
 
             foreach (var lether in content)
             {
+                if (obj != null && properties == null)
+                    properties = obj.GetType().GetProperties();
+
                 switch (lether)
                 {
                     case ' ':
@@ -47,29 +55,29 @@ namespace Library.Framework.JsonUtil
                         break;
 
                     case '[':
-                        if (contentList == null)
-                            contentList = new List<string>();
+                        obj = new T();
+                        index = 0;
 
                         break;
                     case ',':
-                        if (contentList != null)
+                        if (caracters.Length > 0)
                         {
-                            contentList.Add(caracters.ToString());
+                            properties[index].SetValue(obj, caracters.ToString());
                             caracters.Clear();
+                            index++;
                         }
 
                         break;
                     case ']':
                         if (caracters.Length > 0)
                         {
-                            contentList.Add(caracters.ToString());
+                            properties[index].SetValue(obj, caracters.ToString());
                             caracters.Clear();
+                            
+                            list.Add(obj);
+
+                            index++;
                         }
-
-                        if (contentList != null)
-                            list.Add(contentList);
-
-                        contentList = null;
 
                         break;
 
@@ -79,6 +87,9 @@ namespace Library.Framework.JsonUtil
                 }
             }
 
+            caracters = null;
+            properties = null;
+
             return list;
         }
 
@@ -86,7 +97,28 @@ namespace Library.Framework.JsonUtil
         {
             if (!content.Contains("[") || !content.Contains("]"))
                 throw new Exception("Format array invalid.");
+        }
 
+        private static T CreateObject<T>(List<string> contents) where T : new()
+        {
+            T obj = new T();
+
+            if (contents.Count > 0)
+            {
+                int index = 0;
+
+                foreach (PropertyInfo property in obj.GetType().GetProperties())
+                {
+                    if (property.PropertyType == contents[index].GetType())
+                        property.SetValue(obj, contents[index]);
+                    else
+                        property.SetValue(obj, Convert.ChangeType(contents[index], property.PropertyType));
+
+                    index++;
+                }
+            }
+
+            return obj;
         }
     }
 }
