@@ -22,13 +22,6 @@ namespace Library.Framework.JsonUtil
             return JsonHelper.DeserializeObject<List<object>>(content);
         }
 
-        public static List<object> Deserialize(string content)
-        {
-            Validate(content);
-
-            return JsonSerializer.Deserialize<List<object>>(content);
-        }
-
         public static List<T> GetArrayWithStringBuilder<T>(string content) where T : new()
         {
             var list = new List<T>();
@@ -55,6 +48,7 @@ namespace Library.Framework.JsonUtil
                         break;
 
                     case '[':
+
                         obj = new T();
                         index = 0;
 
@@ -97,28 +91,6 @@ namespace Library.Framework.JsonUtil
         {
             if (!content.Contains("[") || !content.Contains("]"))
                 throw new Exception("Format array invalid.");
-        }
-
-        private static T CreateObject<T>(List<string> contents) where T : new()
-        {
-            T obj = new T();
-
-            if (contents.Count > 0)
-            {
-                int index = 0;
-
-                foreach (PropertyInfo property in obj.GetType().GetProperties())
-                {
-                    if (property.PropertyType == contents[index].GetType())
-                        property.SetValue(obj, contents[index]);
-                    else
-                        property.SetValue(obj, Convert.ChangeType(contents[index], property.PropertyType));
-
-                    index++;
-                }
-            }
-
-            return obj;
         }
     }
 }

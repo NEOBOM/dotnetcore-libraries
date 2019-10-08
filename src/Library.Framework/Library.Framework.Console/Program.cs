@@ -39,8 +39,7 @@ namespace Library.Framework.Console
             for (int i = 0; i < 1_000_000; i++)
             {
                 var result = ArrayConvert.ConvertCustomList<ObjectTest>(_contentTest);
-                //var result = ArrayConvert.DeserializeObject (_contentTest);
-                //var result = ArrayConvert.Deserialize(_contentTest);
+                //var result = ArrayConvert.DeserializeObject(_contentTest);
 
                 if (result == null || result.Count == 0)
                     throw new Exception("Error!");
@@ -53,5 +52,12 @@ namespace Library.Framework.Console
             System.Console.WriteLine($"GC Gen #0  : {GC.CollectionCount(0) - before0}");
             System.Console.WriteLine("Done!");
         }
+    }
+
+    public struct ObjStruct
+    {
+        public string Prop1 { get; set; }
+        public string Prop2 { get; set; }
+        public string Prop3 { get; set; }
     }
 }
