@@ -27,7 +27,7 @@ namespace Library.Framework.SqlEF
             return _db.Set<TEntity>().Find(predicate);
         }
 
-        public virtual Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual ValueTask<TEntity> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return _db.Set<TEntity>().FindAsync(predicate);
         }
