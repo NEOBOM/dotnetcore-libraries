@@ -14,7 +14,7 @@ namespace Library.Framework.Console
 
         static void Main(string[] args)
         {
-            RunBenchMark();
+            //RunBenchMark();
 
             //var summarry = BenchmarkRunner.Run<Program>();
         }
@@ -24,9 +24,6 @@ namespace Library.Framework.Console
 
         //[Benchmark]
         //public void DeserializeObject() => ArrayConvert.DeserializeObject(_contentTest);
-
-        //[Benchmark]
-        //public void Deserialize() => ArrayConvert.Deserialize(_contentTest);
 
         public static void RunBenchMark()
         {
