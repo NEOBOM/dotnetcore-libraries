@@ -33,14 +33,9 @@ namespace Library.Framework.MongoDB
         {
             //_db.CreateCollectionAsync(_collectinoName, );
             //_db.CreateCollectionAsync<CobrancaExcessivaItemDocument>(_collectinoName, true, (long)Math.Pow(1024, 3), _maxDocs);
-            //_databaseFacade.CreateIndexIfNotExistsAsync<CobrancaExcessivaItemDocument>(_collectinoName, "consulta-relatorio", null,
-            //      e => e.IdTipoEntrega
-            //    , e => e.IdUnidadeNegocio
-            //    , e => e.IdCategoria
-            //    , e => e.IdDepartamento
-            //    , e => e.CnpjFilial
-            //    , e => e.IdSku
-            //    , e => e.DataCalculo);
+            //_databaseFacade.CreateIndexIfNotExistsAsync<CobrancaExcessivaItemDocument>(_collectinoName, "testcollection", null,
+            //      e => e.Id
+            //    , e => e.Name);
         }
     }
 }
