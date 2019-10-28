@@ -44,5 +44,21 @@ namespace Library.Framework.Helpers.Extensions
             if (list != null && contents.ContainItem())
                 list.AddRange(contents);
         }
+
+        /// <summary>
+        /// Chuck the list
+        /// </summary>
+        /// <typeparam name="T">Generic type</typeparam>
+        /// <param name="source">This</param>
+        /// <param name="chunkSize">Chunk size</param>
+        /// <returns></returns>
+        public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
+        {
+            return source
+                .Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index / chunkSize)
+                .Select(x => x.Select(v => v.Value).ToList())
+                .ToList();
+        }
     }
 }

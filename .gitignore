@@ -40,3 +40,4 @@
 /src/Library.Framework/Library.Framework.MongoDB/bin
 /src/Library.Framework/Library.Framework.SqlEF/bin
 /src/Library.Framework/Library.Framework.Helpers/obj
+/src/Library.Framework/Library.Framework.Helpers/bin/Release/netcoreapp3.0
