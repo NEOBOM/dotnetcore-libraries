@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.ADO", "Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.Console", "Library.Framework.Console\Library.Framework.Console.csproj", "{497AB211-C64B-456C-9BA5-D253B3FCAE9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.Commom", "Library.Framework.Commom\Library.Framework.Commom.csproj", "{851DD31F-496F-4019-A213-0707EA9FD5FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Framework.Commom", "Library.Framework.Commom\Library.Framework.Commom.csproj", "{851DD31F-496F-4019-A213-0707EA9FD5FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Framework.Helpers", "Library.Framework.Helpers\Library.Framework.Helpers.csproj", "{7F8AD55D-793D-4B53-85D9-477C3A6BDB6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{851DD31F-496F-4019-A213-0707EA9FD5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{851DD31F-496F-4019-A213-0707EA9FD5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{851DD31F-496F-4019-A213-0707EA9FD5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8AD55D-793D-4B53-85D9-477C3A6BDB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8AD55D-793D-4B53-85D9-477C3A6BDB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8AD55D-793D-4B53-85D9-477C3A6BDB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8AD55D-793D-4B53-85D9-477C3A6BDB6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
