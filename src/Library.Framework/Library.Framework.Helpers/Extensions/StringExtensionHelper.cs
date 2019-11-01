@@ -19,7 +19,17 @@ namespace Library.Framework.Helpers.Extensions
             var cropped = content.Substring(cropStart);
             var cropEnd = cropped.IndexOf(endsWith, StringComparison.Ordinal);
             var cleaned = cropped.Substring(0, cropEnd).Substring(startsWith.Length);
+
             return cleaned;
+        }
+
+        public static string BeetweenSpanT(this string content, string startsWith, string endsWith)
+        {
+            var cropStart = content.AsSpan().IndexOf(startsWith, StringComparison.Ordinal);
+            var cropped = content.AsSpan(cropStart);
+            var cropEnd = cropped.IndexOf(endsWith, StringComparison.Ordinal);
+            
+            return cropped.Slice(0, cropEnd).ToString();
         }
 
         public static string LastContent(this string content, string startsWith, string endsWith)

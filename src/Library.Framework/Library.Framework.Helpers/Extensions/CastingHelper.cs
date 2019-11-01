@@ -7,9 +7,13 @@ namespace Library.Framework.Helpers.Extensions
 {
     public static class CastingHelper
     {
-        private readonly static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions { IgnoreNullValues = true };
+        private readonly static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions 
+        { 
+            IgnoreNullValues = true, 
+            IgnoreReadOnlyProperties = true 
+        };
 
-        public static int AsInt(this string source)
+        public static int ToTryInt(this string source)
         {
             if (string.IsNullOrEmpty(source)) throw new Exception("String is null or empty");
 
@@ -20,14 +24,19 @@ namespace Library.Framework.Helpers.Extensions
             return value;
         }
 
-        public static T DeserializeObjec<T>(this string source)
+        public static T DeserializeObject<T>(string content) where T : class
         {
-            return JsonSerializer.Deserialize<T>(source);
+            return JsonSerializer.Deserialize<T>(content, _jsonSerializerOptions);
+        }
+
+        public static object DeserializeObject(string content)
+        {
+            return JsonSerializer.Deserialize(content, typeof(object), _jsonSerializerOptions);
         }
 
         public static string SerializeObject<T>(this T source)
         {
-            return JsonSerializer.Serialize(source);
+            return JsonSerializer.Serialize(source, _jsonSerializerOptions);
         }
     }
 }

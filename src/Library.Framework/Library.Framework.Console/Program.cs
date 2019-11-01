@@ -20,11 +20,11 @@ namespace Library.Framework.Console
             var summarry = BenchmarkRunner.Run<Program>();
         }
 
-        [Benchmark]
-        public void ConvertCustomList() => ArrayConvert.ConvertCustomList<ObjectTest>(_contentTest);
+        //[Benchmark]
+        //public void ConvertCustomList() => ArrayConvert.ConvertCustomList<ObjectTest>(_contentTest);
 
-        [Benchmark]
-        public void DeserializeObject() => JsonSerealizeTest();
+        //[Benchmark]
+        //public void DeserializeObject() => JsonSerealizeTest();
 
         //public static void RunBenchMark()
         //{
@@ -51,9 +51,9 @@ namespace Library.Framework.Console
         //    System.Console.WriteLine("Done!");
         //}
 
-        public static List<object> JsonSerealizeTest()
-        {
-            return System.Text.Json.JsonSerializer.Deserialize<List<object>>(_contentTest);
-        }
+        //public static List<object> JsonSerealizeTest()
+        //{
+        //    return System.Text.Json.JsonSerializer.Deserialize<List<object>>(_contentTest);
+        //}
     }
 }
